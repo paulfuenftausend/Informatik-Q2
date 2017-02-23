@@ -1,5 +1,5 @@
+//https://github.com/paulfuenftausend/Informatik-Q2.git github reposetory
 import java.util.ArrayList;
-//jaja
 
 import javax.swing.JOptionPane;
 
