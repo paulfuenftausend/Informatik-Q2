@@ -10,6 +10,7 @@ public class Zusatzaufgaben {
 	public static ArrayList<Character> ersterStringChar = new ArrayList<Character>();
 	public static ArrayList<Character> zweiterStringChar = new ArrayList<Character>();
 	public static ArrayList<Integer> monatsTage = new ArrayList<Integer>();
+	//public static ArrayList<String> monatsTage = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -17,8 +18,8 @@ public class Zusatzaufgaben {
 		//passwortAusSatz("Hallo ich bin paul, und wer bist du ?");
 		//anagramTest();
 		//einMalEins();
-		Datum();
-		//note();
+		//Datum();
+		note();
 		
 	}
 	public static void pruefnummer()
