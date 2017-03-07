@@ -26,28 +26,31 @@ public class GoldbachscheVermutung {
 				primZahlen.add(i);
 			}
 		}
-		System.out.println(primZahlen);
-		System.out.println(primZahlen.size());
+		//System.out.println(primZahlen);
+		//System.out.println(primZahlen.size());
 	}
 	public static void  berechnung()
 	{
 		int eingabe2 = eingabe1-4;
 		int i = 0;
 		boolean gefunden = false;
-		while(primZahlen.get(i) < eingabe2 && gefunden == false)
+		for(int k = 0; k < eingabe2; i=i+2)
 		{
-			int j = 0;
-			while(primZahlen.get(j) < primZahlen.size() && primZahlen.get(i)+primZahlen.get(j) <= eingabe2)
+			while(primZahlen.get(i) < eingabe2 && !gefunden)
 			{
-				if(primZahlen.get(j)+primZahlen.get(i)==eingabe2)
+				int j = 0;
+				while(primZahlen.get(j) < primZahlen.size() && primZahlen.get(i)+primZahlen.get(j) <= eingabe2)
 				{
-					System.out.println(primZahlen.get(i)); 
-					System.out.println(primZahlen.get(j));
-					gefunden = true;
+					if(primZahlen.get(j)+primZahlen.get(i)==eingabe2)
+					{
+						System.out.println(primZahlen.get(i)); 
+						System.out.println(primZahlen.get(j));
+						gefunden = true;
+					}
+					j++;
 				}
-				j++;
+				i++;
 			}
-			i++;
 		}
 	}
 }
