@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class GoldbachscheVermutung {
 
 	public static ArrayList<Integer> primZahlen = new ArrayList<Integer>(); 
-	public static int eingabe1 = /*Integer.parseInt(JOptionPane.showInputDialog("Deine Eingabe"))*/ 100+4;
+	public static int eingabe1 = /*Integer.parseInt(JOptionPane.showInputDialog("Deine Eingabe"))*/ 1000000;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		long Time = System.nanoTime();
@@ -30,42 +30,40 @@ public class GoldbachscheVermutung {
 	}
 	public static void  berechnung()
 	{
-		int eingabe2 = eingabe1-4;
-		boolean gefunden = false;
-		for(int k = 4; k <= eingabe2 ;)
+		int eingabe2 = eingabe1;
+		boolean gefunden2 = false;
+		for(int k = 4; k <= eingabe2 && !gefunden2;k=k+2)
 		{
-			int i = primZahlen.size()-1;
+			int i = 0;
 			
-			while(primZahlen.get(i-1) > k && !gefunden)
+			while(primZahlen.get(i) < k && !gefunden2)
 			{
+				int primzahl1 = primZahlen.get(i);
 				int j = 0;
-				boolean gefunden2 = false;
-				System.out.println("signal");
-				while(!gefunden2 && j < primZahlen.size()-1)
+				boolean gefunden = false;
+				//System.out.println("signal");
+				while(!gefunden && j < primZahlen.size()-1 )
 				{
-					System.out.println(primZahlen.get(i)+" i");
-					System.out.println(primZahlen.get(j)+" j");
-					System.out.println(k+" k");
-					/*System.out.println(primZahlen.size()+" size");*/
-					if(primZahlen.get(i) + primZahlen.get(j)==k)
-					{
-						System.out.println(primZahlen.get(i)); 
-						System.out.println(primZahlen.get(j));
-						System.out.println(k);
-						gefunden2=true;
-						if(primZahlen.get(j)+primZahlen.get(i)==eingabe2)
+					if((primzahl1 + primZahlen.get(j))==k)
 						{
-							System.out.println(primZahlen.get(i)); 
+							/*System.out.println(primZahlen.get(i)); 
 							System.out.println(primZahlen.get(j));
+							System.out.println("K ist " + k);*/
+							gefunden=true;
+						}
+					if(k == eingabe2)
+						{
+							/*System.out.println(primZahlen.get(i)); 
+							System.out.println(primZahlen.get(j));*/
 							System.out.println("Ende bei " + eingabe2);
+							gefunden2 = true;
 							gefunden = true;
 						}
-					}	
 					j++;
 				}
-				i--;
+				i++;
 			}
-			k=k+2;
 		}
+		
 	}
 }
