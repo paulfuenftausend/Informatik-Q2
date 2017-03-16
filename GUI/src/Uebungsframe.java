@@ -47,7 +47,7 @@ public class Uebungsframe extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		btnMeinButton = new JButton("Mein Button");
+		btnMeinButton = new JButton("Drück nicht den Knopf");
 		contentPane.add(btnMeinButton, BorderLayout.CENTER);
 	}
 	
@@ -56,7 +56,7 @@ public class Uebungsframe extends JFrame {
 		btnMeinButton.addActionListener(new ActionListener() {
 				@Override			
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("Button gedrueckt!"); //zum Zeichen das die Aktion ausgelÃ¶st wurde
+					JOptionPane.showMessageDialog(null, "Du hast den Knopfgedrückt. Idiot.");//System.out.println("Button gedrueckt!"); //zum Zeichen das die Aktion ausgelÃ¶st wurde
 					// Methodenaufruf einfÃ¼gen;
 					
 				}
