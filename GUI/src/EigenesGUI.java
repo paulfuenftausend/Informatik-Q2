@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,12 +26,15 @@ public class EigenesGUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 200, 300, 150);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.BLUE);
-		contentPane.(Color.WHITE);
+		contentPane.setBackground(new Color (160, 000, 000));
 		contentPane.setLayout(new BorderLayout(0,0));
 		setContentPane(contentPane);
 		
 		JLabel lblMeinText = new JLabel("DADAM");
-		contentPane.add(lblMeinText, BorderLayout.CENTER);
+		JLabel lblMeinText2 = new JLabel("BABAM");
+		contentPane.add(lblMeinText, BorderLayout.EAST);
+		contentPane.add(lblMeinText2, BorderLayout.CENTER);
+		lblMeinText.setForeground(Color.WHITE);
+		lblMeinText2.setForeground(Color.WHITE);
 	}
 }
