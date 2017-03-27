@@ -11,6 +11,7 @@ public class TaschenRechner extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//TaschenRechner.setContentPane(panel);
 	static JPanel panel = new JPanel();
 	static JButton plus = new JButton("+");
 	static JButton minus = new JButton("-");
