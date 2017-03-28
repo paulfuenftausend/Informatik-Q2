@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -11,13 +12,14 @@ public class TaschenRechner extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//TaschenRechner.setContentPane(panel);
-	static JPanel panel = new JPanel();
+	static JPanel panelGesamt = new JPanel();
+	static JPanel panelOben = new JPanel();
+	static JPanel panelUnten = new JPanel();
 	static JButton plus = new JButton("+");
 	static JButton minus = new JButton("-");
 	static JButton mal = new JButton("x");
 	static JButton teilen = new JButton("/");
-	JButton lösen = new JButton("=");
+	JButton loesen = new JButton("=");
 	static JButton nummer1 = new JButton("1");
 	static JButton nummer2 = new JButton("2");
 	static JButton nummer3 = new JButton("3");
@@ -33,29 +35,40 @@ public class TaschenRechner extends JFrame{
 	
 	public TaschenRechner()
 	{
-		panel.setSize(150, 150);
-		GridLayout grid = new GridLayout(5,1);
-		panel.setLayout(grid);
+		panelGesamt.setSize(500, 500);
+		panelOben.setSize(500, 100);
+		panelUnten.setSize(500, 400);
+		setContentPane(panelGesamt);
 		
-		panel.add(loesung);
-		panel.add(nummer1);
-		panel.add(nummer2);
-		panel.add(nummer3);
-		panel.add(nummer4);
-		panel.add(nummer5);
-		panel.add(nummer6);
-		panel.add(nummer7);
-		panel.add(nummer8);
-		panel.add(nummer9);
-		panel.add(nummer0);
-		panel.add(plus);
-		panel.add(minus);
-		panel.add(mal);
-		panel.add(teilen);
+		GridLayout grid = new GridLayout(4,3);
+		panelUnten.setLayout(grid);
+		
+		panelOben.add(loesung);
+		panelUnten.add(nummer7);
+		panelUnten.add(nummer8);
+		panelUnten.add(nummer9);
+		panelUnten.add(mal);
+		panelUnten.add(nummer4);
+		panelUnten.add(nummer5);
+		panelUnten.add(nummer6);
+		panelUnten.add(teilen);
+		panelUnten.add(nummer1);
+		panelUnten.add(nummer2);
+		panelUnten.add(nummer3);
+		panelUnten.add(plus);
+		panelUnten.add(komma);
+		panelUnten.add(nummer0);
+		panelUnten.add(loesen);
+		panelUnten.add(minus);
+		panelGesamt.add(panelOben, BorderLayout.NORTH);
+		panelGesamt.add(panelUnten, BorderLayout.WEST);
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new TaschenRechner();
+		TaschenRechner rechner = new TaschenRechner();
+		rechner.setVisible(true);
+		rechner.setSize(200, 200);
+		rechner.setResizable(false);
 	}
 }
