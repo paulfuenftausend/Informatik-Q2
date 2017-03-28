@@ -33,7 +33,7 @@ public class EigenesGUI extends JFrame{
 		JLabel lblMeinText = new JLabel("DADAM");
 		JLabel lblMeinText2 = new JLabel("BABAM");
 		contentPane.add(lblMeinText, BorderLayout.EAST);
-		contentPane.add(lblMeinText2, BorderLayout.CENTER);
+		contentPane.add(lblMeinText2, BorderLayout.EAST);
 		lblMeinText.setForeground(Color.WHITE);
 		lblMeinText2.setForeground(Color.WHITE);
 	}
