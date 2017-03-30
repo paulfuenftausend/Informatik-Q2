@@ -68,7 +68,7 @@ public class TaschenRechner extends JFrame{
 		// TODO Auto-generated method stub
 		TaschenRechner rechner = new TaschenRechner();
 		rechner.setVisible(true);
-		rechner.setSize(200, 200);
+		rechner.setSize(300, 200);
 		rechner.setResizable(false);
 	}
 }
