@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.awt.event.ActionEvent;
 
@@ -32,6 +33,9 @@ public class Random extends JFrame {
 	private JLabel lblDerSpieler;
 	private static JLabel label;
 	private static JLabel label_1;
+	
+	public static ArrayList<Integer> gewinnRateSpieler1 = new ArrayList<Integer>();
+	public static ArrayList<Integer> gewinnRateSpieler2 = new ArrayList<Integer>();
 
 	/**
 	 * Launch the application.
@@ -60,9 +64,13 @@ public class Random extends JFrame {
 		{
 			label.setText("Winner");
 			label_1.setText("Loser");
+			gewinnRateSpieler1.add(1);
+			gewinnRateSpieler2.add(0);
 		}else{
 			label_1.setText("Winner");
 			label.setText("Loser");
+			gewinnRateSpieler1.add(0);
+			gewinnRateSpieler2.add(1);
 		}
 	}
 
