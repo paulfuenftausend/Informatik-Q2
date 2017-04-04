@@ -36,6 +36,11 @@ public class Random extends JFrame {
 	
 	public static ArrayList<Integer> gewinnRateSpieler1 = new ArrayList<Integer>();
 	public static ArrayList<Integer> gewinnRateSpieler2 = new ArrayList<Integer>();
+	private JLabel lblWinloseRatio;
+	private JLabel label_2;
+	private static JTextField txtWinLosePlayer1;
+	private static JTextField txtWinLosePlayer2;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class Random extends JFrame {
 	}
 	public static void gewinner()
 	{
-		int zahlSpieler1 = Integer.parseInt(passwordField.getText()); //aendern
+		int zahlSpieler1 = Integer.parseInt(passwordField.getText()); 
 		int zahlSpieler2 = Integer.parseInt(passwordField_1.getText());
 		int zufall = ThreadLocalRandom.current().nextInt(min, max + 1);
 		txtLeer.setText(Integer.toString(zufall));
@@ -73,6 +78,37 @@ public class Random extends JFrame {
 			gewinnRateSpieler2.add(1);
 		}
 	}
+	public static void reset()
+	{
+		int winPlayer1 = 0;
+		int winPlayer2 = 0;
+		for(int k: gewinnRateSpieler1)
+		{
+			winPlayer1 = winPlayer1 + k;
+		}
+		for(int k: gewinnRateSpieler2)
+		{
+			winPlayer2 = winPlayer2 + k;
+		}
+		/**if(winPlayer1 == 0) // Mit geteilt
+		{
+			txtWinLosePlayer1.setText(""+winPlayer1);
+			txtWinLosePlayer2.setText(""+winPlayer2);
+		}else if(winPlayer2 == 0){
+			txtWinLosePlayer1.setText(""+winPlayer1);
+			txtWinLosePlayer2.setText(""+winPlayer2);
+		}else{
+			txtWinLosePlayer1.setText(""+winPlayer1/winPlayer2);
+			txtWinLosePlayer2.setText(""+winPlayer2/winPlayer1);
+		}*/
+		txtWinLosePlayer1.setText(winPlayer1+":"+winPlayer2); //ohne geteilt
+		txtWinLosePlayer2.setText(winPlayer2+":"+winPlayer1);
+		passwordField.setEchoChar('*');
+		passwordField_1.setEchoChar('*');
+		passwordField.setText("");
+		passwordField_1.setText("");
+		txtLeer.setText("");
+	}
 
 	/**
 	 * Create the frame.
@@ -80,15 +116,15 @@ public class Random extends JFrame {
 	public Random() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 440);
+		setBounds(100, 100, 690, 540);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		lblNewLabel = new JLabel("Spieler 1:");
@@ -134,18 +170,53 @@ public class Random extends JFrame {
 		gbc_passwordField_1.gridy = 1;
 		contentPane.add(passwordField_1, gbc_passwordField_1);
 		
+		lblWinloseRatio = new JLabel("Win/Lose Ratio:");
+		GridBagConstraints gbc_lblWinloseRatio = new GridBagConstraints();
+		gbc_lblWinloseRatio.gridwidth = 3;
+		gbc_lblWinloseRatio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblWinloseRatio.gridx = 0;
+		gbc_lblWinloseRatio.gridy = 4;
+		contentPane.add(lblWinloseRatio, gbc_lblWinloseRatio);
+		
+		txtWinLosePlayer1 = new JTextField();
+		GridBagConstraints gbc_txtWinLosePlayer1 = new GridBagConstraints();
+		gbc_txtWinLosePlayer1.insets = new Insets(0, 0, 5, 5);
+		gbc_txtWinLosePlayer1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtWinLosePlayer1.gridx = 3;
+		gbc_txtWinLosePlayer1.gridy = 4;
+		contentPane.add(txtWinLosePlayer1, gbc_txtWinLosePlayer1);
+		txtWinLosePlayer1.setColumns(10);
+		
+		label_2 = new JLabel("Win/Lose Ratio:");
+		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.anchor = GridBagConstraints.EAST;
+		gbc_label_2.insets = new Insets(0, 0, 5, 5);
+		gbc_label_2.gridx = 6;
+		gbc_label_2.gridy = 4;
+		contentPane.add(label_2, gbc_label_2);
+		
+		txtWinLosePlayer2 = new JTextField();
+		txtWinLosePlayer2.setColumns(10);
+		GridBagConstraints gbc_txtWinLosePlayer2 = new GridBagConstraints();
+		gbc_txtWinLosePlayer2.gridwidth = 3;
+		gbc_txtWinLosePlayer2.insets = new Insets(0, 0, 5, 5);
+		gbc_txtWinLosePlayer2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtWinLosePlayer2.gridx = 7;
+		gbc_txtWinLosePlayer2.gridy = 4;
+		contentPane.add(txtWinLosePlayer2, gbc_txtWinLosePlayer2);
+		
 		label_1 = new JLabel("");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 6;
-		gbc_label_1.gridy = 2;
+		gbc_label_1.gridy = 6;
 		contentPane.add(label_1, gbc_label_1);
 		
 		label = new JLabel("");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 0;
-		gbc_label.gridy = 3;
+		gbc_label.gridy = 7;
 		contentPane.add(label, gbc_label);
 		
 		lblNewLabel_3 = new JLabel("1. Jeder gibt eine Zahl zwischen 1 und 1000 ein.");
@@ -154,36 +225,48 @@ public class Random extends JFrame {
 		gbc_lblNewLabel_3.gridwidth = 4;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 4;
-		gbc_lblNewLabel_3.gridy = 5;
+		gbc_lblNewLabel_3.gridy = 9;
 		contentPane.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		lblDerSpieler = new JLabel("2. Der Spieler dessen Zahl n\u00E4her am Zielwert ist gewinnt");
 		GridBagConstraints gbc_lblDerSpieler = new GridBagConstraints();
 		gbc_lblDerSpieler.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDerSpieler.gridx = 4;
-		gbc_lblDerSpieler.gridy = 6;
+		gbc_lblDerSpieler.gridy = 10;
 		contentPane.add(lblDerSpieler, gbc_lblDerSpieler);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 15);
 		gbc_btnNewButton.gridx = 3;
-		gbc_btnNewButton.gridy = 9;
+		gbc_btnNewButton.gridy = 13;
 		contentPane.add(btnNewButton, gbc_btnNewButton);
+		
+		btnNewButton_1 = new JButton("Reset");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				reset();
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_1.gridx = 4;
+		gbc_btnNewButton_1.gridy = 13;
+		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		lblNewLabel_2 = new JLabel("Zufalls Zahl:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 6;
-		gbc_lblNewLabel_2.gridy = 9;
+		gbc_lblNewLabel_2.gridy = 13;
 		contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		txtLeer = new JTextField();
 		txtLeer.setEditable(false);
 		GridBagConstraints gbc_txtLeer = new GridBagConstraints();
-		gbc_txtLeer.gridwidth = 2;
+		gbc_txtLeer.gridwidth = 3;
 		gbc_txtLeer.insets = new Insets(0, 0, 5, 5);
 		gbc_txtLeer.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtLeer.gridx = 8;
-		gbc_txtLeer.gridy = 9;
+		gbc_txtLeer.gridy = 13;
 		contentPane.add(txtLeer, gbc_txtLeer);
 		txtLeer.setColumns(10);
 	}
