@@ -1,17 +1,21 @@
 import java.util.ArrayList;
 
 public class Getraenke {
-	public static ArrayList<Double> milchPreisArray = new ArrayList<Double>();
-	public static ArrayList<Double> kaffePreisArray = new ArrayList<Double>();
-	public static ArrayList<Double> zuckerPreisArray = new ArrayList<Double>();
-	public static double gesamtPreis = 0;
-	public static double milchPreis = 0;
-	public static double kaffePreis = 0;
-	public static double zuckerPreis = 0;
-	public static double becherPreis = 0;
-	public static double extraPreis = 0;
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public ArrayList<Double> milchPreisArray = new ArrayList<Double>();
+	public ArrayList<Double> kaffePreisArray = new ArrayList<Double>();
+	public ArrayList<Double> zuckerPreisArray = new ArrayList<Double>();
+	public ArrayList<Double> becherPreisArray = new ArrayList<Double>();
+	public ArrayList<Double> extraPreisArray = new ArrayList<Double>();  
+	
+	public double gesamtPreis = 0;
+	public double milchPreis = 0;
+	public double kaffePreis = 0;
+	public double zuckerPreis = 0;
+	public double becherPreis = 0;
+	public double extraPreis = 0;
+	
+	public Getraenke(KaffeMask frame)
+	{
 		milchPreisArray.add(0.0); //Vollmilch
 		milchPreisArray.add(0.1); //Fettarm
 		milchPreisArray.add(0.2); //Soja
@@ -19,32 +23,36 @@ public class Getraenke {
 		kaffePreisArray.add(1.2); //Schwarz
 		kaffePreisArray.add(2.7); //MilchKaffe
 		kaffePreisArray.add(1.8); //Kakao
-		zuckerPreisArray.add(0.0); //weisser Zucker
-		zuckerPreisArray.add(0.2); //brauner zucker
-		zuckerPreisArray.add(0.5); //stevia
+		zuckerPreisArray.add(0.0); //Weisser Zucker
+		zuckerPreisArray.add(0.2); //Brauner Zucker
+		zuckerPreisArray.add(0.7); //Süßstoff
+		zuckerPreisArray.add(0.5); //Stevia
+		becherPreisArray.add(2.0); //Groß
+		becherPreisArray.add(0.7); //Mittel
+		becherPreisArray.add(0.0); //Klein
  	}
-	public static void gesamtPreisBerechnen()
+	public void gesamtPreisBerechnen()
 	{
 		gesamtPreis = milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis;
 	}
-	public static void milchPreisBerechnen()
+	public void milchPreisBerechnen()
 	{
-		
+		milchPreis = milchPreisArray.get(KaffeMask.milchNummer);
 	}
-	public static void kaffePreisBerechnen()
+	public void kaffePreisBerechnen()
 	{
-		
+		kaffePreis = kaffePreisArray.get(KaffeMask.kaffeNummer);
 	}
-	public static void zuckerPreisBerechnen()
+	public void zuckerPreisBerechnen()
 	{
-		
+		zuckerPreis = zuckerPreisArray.get(KaffeMask.zuckerNummer);
 	}
-	public static void becherPreisBerechnen()
+	public void becherPreisBerechnen()
 	{
-		
+		becherPreis = becherPreisArray.get(KaffeMask.becherNummer);
 	}
-	public static void extraPreisBerechnen()
+	public void extraPreisBerechnen()
 	{
-		
+		extraPreis = 0;
 	}
 }
