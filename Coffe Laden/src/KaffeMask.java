@@ -271,7 +271,7 @@ public class KaffeMask extends JFrame {
 		btnBestellungAufgeben = new JButton("Bestellung aufgeben");
 		contentPane.add(btnBestellungAufgeben, "cell 0 13,grow");
 		
-		textField = new JTextField();
+		textField = new JTextField(Integer.toString(Getraenke.gesamtPreis));
 		contentPane.add(textField, "cell 1 13 2 3,grow");
 		textField.setColumns(10);
 		

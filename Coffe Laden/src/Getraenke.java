@@ -7,7 +7,7 @@ public class Getraenke {
 	public ArrayList<Double> becherPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> extraPreisArray = new ArrayList<Double>();  
 	
-	public double gesamtPreis = 0;
+	public static int gesamtPreis = 0;
 	public double milchPreis = 0;
 	public double kaffePreis = 0;
 	public double zuckerPreis = 0;
@@ -25,15 +25,15 @@ public class Getraenke {
 		kaffePreisArray.add(1.8); //Kakao
 		zuckerPreisArray.add(0.0); //Weisser Zucker
 		zuckerPreisArray.add(0.2); //Brauner Zucker
-		zuckerPreisArray.add(0.7); //Süßstoff
+		zuckerPreisArray.add(0.7); //Sï¿½ï¿½stoff
 		zuckerPreisArray.add(0.5); //Stevia
-		becherPreisArray.add(2.0); //Groß
+		becherPreisArray.add(2.0); //Groï¿½
 		becherPreisArray.add(0.7); //Mittel
 		becherPreisArray.add(0.0); //Klein
  	}
 	public void gesamtPreisBerechnen()
 	{
-		gesamtPreis = milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis;
+		gesamtPreis = (int) (milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis);
 	}
 	public void milchPreisBerechnen()
 	{
