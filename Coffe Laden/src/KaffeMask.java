@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -269,6 +271,13 @@ public class KaffeMask extends JFrame {
 		kaffe.add(chckbxEspresso);
 		
 		btnBestellungAufgeben = new JButton("Bestellung aufgeben");
+		btnBestellungAufgeben.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Getraenke getraenk = new Getraenke();
+				getraenk.preis();
+				textField.setText(Integer.toString(Getraenke.gesamtPreis));
+			}
+		});
 		contentPane.add(btnBestellungAufgeben, "cell 0 13,grow");
 		
 		textField = new JTextField(Integer.toString(Getraenke.gesamtPreis));

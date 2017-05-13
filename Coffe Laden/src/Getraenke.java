@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Getraenke {
-	public ArrayList<Double> milchPreisArray = new ArrayList<Double>();
+	public static ArrayList<Double> milchPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> kaffePreisArray = new ArrayList<Double>();
 	public ArrayList<Double> zuckerPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> becherPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> extraPreisArray = new ArrayList<Double>();  
 	
 	public static int gesamtPreis = 0;
-	public double milchPreis = 0;
+	public static double milchPreis = 0;
 	public double kaffePreis = 0;
 	public double zuckerPreis = 0;
 	public double becherPreis = 0;
@@ -31,11 +31,24 @@ public class Getraenke {
 		becherPreisArray.add(0.7); //Mittel
 		becherPreisArray.add(0.0); //Klein
  	}
+	public Getraenke() {
+		// TODO Auto-generated constructor stub
+	}
+	public void preis()
+	{
+		milchPreisBerechnen();
+		kaffePreisBerechnen();
+		zuckerPreisBerechnen();
+		becherPreisBerechnen();
+		extraPreisBerechnen();
+		gesamtPreisBerechnen();
+		System.out.println("Jup");
+	}
 	public void gesamtPreisBerechnen()
 	{
 		gesamtPreis = (int) (milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis);
 	}
-	public void milchPreisBerechnen()
+	public static void milchPreisBerechnen()
 	{
 		milchPreis = milchPreisArray.get(KaffeMask.milchNummer);
 	}
