@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Getraenke {
-	public ArrayList<Double> milchPreisArray = new ArrayList<Double>();
+	/*public ArrayList<Double> milchPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> kaffePreisArray = new ArrayList<Double>();
 	public ArrayList<Double> zuckerPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> becherPreisArray = new ArrayList<Double>();
@@ -30,7 +30,20 @@ public class Getraenke {
 		becherPreisArray.add(2.0); //Groﬂ
 		becherPreisArray.add(0.7); //Mittel
 		becherPreisArray.add(0.0); //Klein
- 	}
+ 	}*/
+	public Getraenke() {
+		// TODO Auto-generated constructor stub
+	}
+	/*public void preise()
+	{
+		milchPreisBerechnen();
+		kaffePreisBerechnen();
+		zuckerPreisBerechnen();
+		becherPreisBerechnen();
+		extraPreisBerechnen();
+		gesamtPreisBerechnen();
+		
+	}
 	public void gesamtPreisBerechnen()
 	{
 		gesamtPreis = milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis;
@@ -54,5 +67,5 @@ public class Getraenke {
 	public void extraPreisBerechnen()
 	{
 		extraPreis = 0;
-	}
+	}*/
 }
