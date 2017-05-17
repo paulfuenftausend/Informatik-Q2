@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Getraenke {
-	public static ArrayList<Double> milchPreisArray = new ArrayList<Double>();
+	/*public static ArrayList<Double> milchPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> kaffePreisArray = new ArrayList<Double>();
 	public ArrayList<Double> zuckerPreisArray = new ArrayList<Double>();
 	public ArrayList<Double> becherPreisArray = new ArrayList<Double>();
@@ -23,6 +23,7 @@ public class Getraenke {
 		kaffePreisArray.add(1.2); //Schwarz
 		kaffePreisArray.add(2.7); //MilchKaffe
 		kaffePreisArray.add(1.8); //Kakao
+		ka
 		zuckerPreisArray.add(0.0); //Weisser Zucker
 		zuckerPreisArray.add(0.2); //Brauner Zucker
 		zuckerPreisArray.add(0.7); //S��stoff
@@ -36,6 +37,10 @@ public class Getraenke {
 	}
 	public void preis()
 	{
+		if(milchPreisArray.size() == 0)
+		{
+			arraysFuellen();
+		}
 		milchPreisBerechnen();
 		kaffePreisBerechnen();
 		zuckerPreisBerechnen();
@@ -67,5 +72,5 @@ public class Getraenke {
 	public void extraPreisBerechnen()
 	{
 		extraPreis = 0;
-	}
+	}*/
 }
