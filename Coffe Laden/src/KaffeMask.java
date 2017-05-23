@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,11 +18,15 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.awt.event.ActionEvent;
 
 
 
 public class KaffeMask extends JFrame {
+	
+	public HashMap<Date,HashMap<String,Integer>> verbrauch = new HashMap<>();
+	public HashMap<String,Integer> kaffeMap = new HashMap<>();
 	
 	public int milchNummer = 0; 
 	public int becherNummer = 0;
@@ -47,6 +52,15 @@ public class KaffeMask extends JFrame {
 	public short zuckerPreis1 = 0;
 	public short becherPreis1 = 0;
 	public short extraPreis1 = 0;
+	
+	public int extraSahne = 0;
+	public int extraKakao = 0;
+	public int extraGinger = 0;
+	public int extraShot = 0;
+	public int extraStreusel= 0;
+	public int extraKaramelsauce = 0;
+	public int extraSchokosauce = 0;
+	public int extraMarshmellow = 0;
 	
 	public ArrayList<Short> milchPreisArray1 = new ArrayList<Short>();
 	public ArrayList<Short> kaffePreisArray1 = new ArrayList<Short>();
@@ -142,7 +156,7 @@ public class KaffeMask extends JFrame {
 	}
 	public void gesamtPreisBerechnen1()
 	{
-		gesamtPreis = ""+(milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis)+" für "+ textFieldName.getText();
+		gesamtPreis = ""+(milchPreis+kaffePreis+zuckerPreis+becherPreis+extraPreis)+"0€"+" für "+ textFieldName.getText();
 	}
 	public void milchPreisBerechnen1()
 	{
@@ -162,7 +176,7 @@ public class KaffeMask extends JFrame {
 	}
 	public void extraPreisBerechnen1()
 	{
-		extraPreis = 0;
+		extraPreis = 0.5*(extraSahne+extraKakao+extraSchokosauce+extraKaramelsauce+extraShot+extraStreusel+extraGinger+extraMarshmellow);
 	}
 	public void preis()
 	{
@@ -361,27 +375,139 @@ public class KaffeMask extends JFrame {
 		contentPane.add(lblExtras, "cell 0 6");
 		
 		chckbxSahne = new JCheckBox("Sahne");
+		chckbxSahne.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			if (chckbxSahne.isEnabled() == true)
+				{
+					extraSahne = 1;
+				}
+			else
+				{
+					extraSahne = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxSahne, "cell 1 7");
 		
 		chckbxStreuel = new JCheckBox("Streu\u00DFel");
+		chckbxStreuel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxStreuel.isSelected() == true)
+				{
+					extraStreusel = 1;
+				}
+			else
+				{
+					extraStreusel = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);	
+			}
+		});
 		contentPane.add(chckbxStreuel, "cell 2 7");
 		
 		chckbxKakao = new JCheckBox("Kakao");
+		chckbxKakao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxKakao.isSelected() == true)
+				{
+					extraKakao = 1;
+				}
+			else
+				{
+					extraKakao = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxKakao, "cell 3 7");
 		
 		chckbxShot = new JCheckBox("Shot");
+		chckbxShot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxShot.isSelected() == true)
+				{
+					extraShot = 1;
+				}
+			else
+				{
+					extraShot = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxShot, "cell 4 7");
 		
 		chckbxMarschmellow = new JCheckBox("Marschmellow");
+		chckbxMarschmellow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			if (chckbxMarschmellow.isSelected() == true)
+				{
+					extraMarshmellow = 1;
+				}
+			else
+				{
+					extraMarshmellow = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxMarschmellow, "cell 1 8");
 		
 		chckbxSchokosauce = new JCheckBox("Schokosauce");
+		chckbxSchokosauce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			if (chckbxSchokosauce.isSelected() == true)
+				{
+					extraSchokosauce = 1;
+				}
+			else
+				{
+					extraSchokosauce = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxSchokosauce, "cell 2 8");
 		
 		chckbxKaramelsauce = new JCheckBox("Karamelsauce");
+		chckbxKaramelsauce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxKaramelsauce.isSelected() == true)
+				{
+					extraKaramelsauce = 1;
+				}
+			else
+				{
+					extraKaramelsauce = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxKaramelsauce, "cell 3 8");
 		
 		chckbxGinger = new JCheckBox("Ginger");
+		chckbxGinger.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			if (chckbxGinger.isSelected() == true)
+				{
+					extraGinger = 1;
+				}
+			else
+				{
+					extraGinger = 0;
+				}
+			preis();
+			textField.setText(gesamtPreis);
+			}
+		});
 		contentPane.add(chckbxGinger, "cell 4 8");
 		
 		lblKaffeSorte = new JLabel("Kaffe Sorte:");
@@ -468,15 +594,19 @@ public class KaffeMask extends JFrame {
 		btnBestellungAufgeben = new JButton("Bestellung aufgeben");
 		btnBestellungAufgeben.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Getraenke getraenk = new Getraenke();
+				Getraenke getraenk = new Getraenke(gesamtPreis, milchNummer, kaffeNummer, zuckerNummer, becherNummer);
 				preis();
 				textField.setText(gesamtPreis);;
+				System.out.println(getraenk);
+				kaffeMap.put("eins", 1);
+				//verbrauch.put(, kaffeMap);
+				System.out.println(verbrauch.get(23.5));
 			}
 		});
 		
 		contentPane.add(btnBestellungAufgeben, "cell 0 13,grow");
 		
-		textField = new JTextField(gesamtPreis);
+		textField = new JTextField(gesamtPreis+"€"+" für "+ textFieldName.getText());
 		contentPane.add(textField, "cell 1 13 2 3,grow");
 		textField.setColumns(10);
 		
