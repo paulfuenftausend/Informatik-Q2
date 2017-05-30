@@ -19,13 +19,14 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 
 
 
 public class KaffeMask extends JFrame {
 	
-	public HashMap<Date,HashMap<String,Integer>> verbrauch = new HashMap<>();
+	public HashMap<LocalDate,HashMap<String,Integer>> verbrauch = new HashMap<>();
 	public HashMap<String,Integer> kaffeMap = new HashMap<>();
 	
 	public int milchNummer = 0; 
@@ -61,6 +62,8 @@ public class KaffeMask extends JFrame {
 	public int extraKaramelsauce = 0;
 	public int extraSchokosauce = 0;
 	public int extraMarshmellow = 0;
+	
+	public int milchverbrauch = 0;
 	
 	public ArrayList<Short> milchPreisArray1 = new ArrayList<Short>();
 	public ArrayList<Short> kaffePreisArray1 = new ArrayList<Short>();
@@ -190,7 +193,7 @@ public class KaffeMask extends JFrame {
 		becherPreisBerechnen1();
 		extraPreisBerechnen1();
 		gesamtPreisBerechnen1();
-		//System.out.println("Jup");
+		
 	}
 	public void gesamtPreisBerechnen()
 	{
@@ -598,22 +601,37 @@ public class KaffeMask extends JFrame {
 				preis();
 				textField.setText(gesamtPreis);;
 				System.out.println(getraenk);
-				kaffeMap.put("eins", 1);
-				//verbrauch.put(, kaffeMap);
-				System.out.println(verbrauch.get(23.5));
+				if (chckbxMilchkaffe.isSelected() || chckbxKakao_1.isSelected() || chckbxMilchshake.isSelected())
+				{
+					milchverbrauch ++;
+				}
+				kaffeMap.put("Milch", 450*milchverbrauch);
+				verbrauch.put(LocalDate.now(), kaffeMap);
+				System.out.println(verbrauch.get(LocalDate.now()));
+				System.exit(0);
 			}
 		});
 		
 		contentPane.add(btnBestellungAufgeben, "cell 0 13,grow");
 		
-		textField = new JTextField(gesamtPreis+"€"+" für "+ textFieldName.getText());
+		textField = new JTextField("1,20€ für "+ textFieldName.getText());
 		contentPane.add(textField, "cell 1 13 2 3,grow");
 		textField.setColumns(10);
 		
 		btnBestellungAbbrechen = new JButton("Bestellung abbrechen");
+		btnBestellungAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		contentPane.add(btnBestellungAbbrechen, "cell 0 14");
 		
 		btnNochEinKaffe = new JButton("Noch ein Kaffe");
+		btnNochEinKaffe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				main(null);
+				System.exit(0);
+			}
+		});
 		contentPane.add(btnNochEinKaffe, "cell 0 15,grow");
 		
 		
