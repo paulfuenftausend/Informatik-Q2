@@ -111,18 +111,6 @@ public class KaffeMask extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KaffeMask frame = new KaffeMask();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public void arraysFuellen()
 	{
@@ -220,6 +208,43 @@ public class KaffeMask extends JFrame {
 		extraPreis = 0;
 	}
 	
+	public void extrasAuswählen()
+	{
+		if(chckbxSahne.isSelected() == true){
+			chckbxSahne.doClick();
+		}
+		if(chckbxMarschmellow.isSelected() == true){
+			chckbxMarschmellow.doClick();
+		}
+		if(chckbxStreuel.isSelected() == true){
+			chckbxStreuel.doClick();
+		}
+		if(chckbxSchokosauce.isSelected() == true){
+			chckbxSchokosauce.doClick();
+		}
+		if(chckbxGinger.isSelected() == true){
+			chckbxGinger.doClick();
+		}	
+		if(chckbxKaramelsauce.isSelected() == true){
+			chckbxKaramelsauce.doClick();
+		}
+		if(chckbxShot.isSelected() == true){
+			chckbxShot.doClick();
+		}
+		if(chckbxKakao.isSelected() == true){
+			chckbxKakao.doClick();
+		}
+	}
+	
+	public void grundZustand()
+	{
+		chckbxKlein.doClick();
+		chckbxKeineMilch.doClick();
+		chckbxWeiss.doClick();
+		chckbxSchwarz.doClick();
+		chckbxGinger.doClick();
+		extrasAuswählen();
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -227,12 +252,14 @@ public class KaffeMask extends JFrame {
 	
 	
 	public KaffeMask() {
+		setBackground(new Color(255, 0, 0));
 		setResizable(false);
 		setForeground(Color.WHITE);
 		setTitle("StarBacks");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 480);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(176, 224, 230));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[][grow][grow][][grow]", "[][][][][][][][][][][][][][][][]"));
@@ -240,6 +267,7 @@ public class KaffeMask extends JFrame {
 		lblBecher = new JLabel("Becher:");
 		contentPane.add(lblBecher, "cell 0 0");
 		chckbxGross = new JCheckBox("Gro\u00DF");
+		chckbxGross.setBackground(new Color(240, 230, 140));
 		chckbxGross.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				becherNummer = 2;
@@ -248,12 +276,6 @@ public class KaffeMask extends JFrame {
 				textField.setText(gesamtPreis);
 			}
 		});
-		/*chckbxNewCheckBox.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				
-			}
-		});
-		*/
 		
 		lblName = new JLabel("Name:");
 		contentPane.add(lblName, "cell 3 0,alignx trailing");
@@ -264,6 +286,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxGross, "cell 1 1");
 		
 		chckbxMittel = new JCheckBox("Mittel");
+		chckbxMittel.setBackground(new Color(255, 127, 80));
 		chckbxMittel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				becherNummer = 1;
@@ -275,6 +298,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxMittel, "cell 2 1");
 		
 		chckbxKlein = new JCheckBox("Klein");
+		chckbxKlein.setBackground(new Color(218, 112, 214));
 		chckbxKlein.setSelected(true);
 		chckbxKlein.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -289,6 +313,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(lblMilch, "cell 0 2");
 		
 		chckbxFettarm = new JCheckBox("Fettarm");
+		chckbxFettarm.setBackground(new Color(135, 206, 250));
 		chckbxFettarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				milchNummer = 1;
@@ -299,7 +324,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxFettarm, "cell 1 3");
 		
 		chckbxVoll = new JCheckBox("Voll");
-		chckbxVoll.setSelected(true);
+		chckbxVoll.setBackground(new Color(173, 255, 47));
 		chckbxVoll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				milchNummer = 0;
@@ -310,6 +335,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxVoll, "cell 2 3");
 		
 		chckbxSoja = new JCheckBox("Soja");
+		chckbxSoja.setBackground(new Color(152, 251, 152));
 		chckbxSoja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				milchNummer = 2;
@@ -320,6 +346,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxSoja, "cell 3 3");
 		
 		chckbxKeineMilch = new JCheckBox("Keine Milch");
+		chckbxKeineMilch.setBackground(new Color(221, 160, 221));
 		chckbxKeineMilch.setSelected(true);
 		chckbxKeineMilch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -334,6 +361,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(lblZucker, "cell 0 4");
 		
 		chckbxWeiss = new JCheckBox("Weiss");
+		chckbxWeiss.setBackground(new Color(238, 130, 238));
 		chckbxWeiss.setSelected(true);
 		chckbxWeiss.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -345,6 +373,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxWeiss, "cell 1 5");
 		
 		chckbxBraun = new JCheckBox("Braun ");
+		chckbxBraun.setBackground(new Color(255, 182, 193));
 		chckbxBraun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				zuckerNummer = 1;
@@ -355,6 +384,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxBraun, "cell 2 5");
 		
 		chckbxSstoff = new JCheckBox("S\u00FC\u00DFstoff");
+		chckbxSstoff.setBackground(new Color(175, 238, 238));
 		chckbxSstoff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				zuckerNummer = 2;
@@ -365,6 +395,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxSstoff, "cell 3 5");
 		
 		chckbxStevia = new JCheckBox("Stevia");
+		chckbxStevia.setBackground(new Color(240, 128, 128));
 		chckbxStevia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				zuckerNummer = 3;
@@ -378,9 +409,10 @@ public class KaffeMask extends JFrame {
 		contentPane.add(lblExtras, "cell 0 6");
 		
 		chckbxSahne = new JCheckBox("Sahne");
+		chckbxSahne.setBackground(new Color(255, 160, 122));
 		chckbxSahne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			if (chckbxSahne.isEnabled() == true)
+			if (chckbxSahne.isSelected() == true)
 				{
 					extraSahne = 1;
 				}
@@ -395,6 +427,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxSahne, "cell 1 7");
 		
 		chckbxStreuel = new JCheckBox("Streu\u00DFel");
+		chckbxStreuel.setBackground(new Color(144, 238, 144));
 		chckbxStreuel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (chckbxStreuel.isSelected() == true)
@@ -412,6 +445,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxStreuel, "cell 2 7");
 		
 		chckbxKakao = new JCheckBox("Kakao");
+		chckbxKakao.setBackground(new Color(255, 99, 71));
 		chckbxKakao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (chckbxKakao.isSelected() == true)
@@ -429,6 +463,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxKakao, "cell 3 7");
 		
 		chckbxShot = new JCheckBox("Shot");
+		chckbxShot.setBackground(new Color(175, 238, 238));
 		chckbxShot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (chckbxShot.isSelected() == true)
@@ -446,6 +481,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxShot, "cell 4 7");
 		
 		chckbxMarschmellow = new JCheckBox("Marschmellow");
+		chckbxMarschmellow.setBackground(new Color(216, 191, 216));
 		chckbxMarschmellow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			if (chckbxMarschmellow.isSelected() == true)
@@ -463,6 +499,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxMarschmellow, "cell 1 8");
 		
 		chckbxSchokosauce = new JCheckBox("Schokosauce");
+		chckbxSchokosauce.setBackground(new Color(175, 238, 238));
 		chckbxSchokosauce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			if (chckbxSchokosauce.isSelected() == true)
@@ -480,6 +517,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxSchokosauce, "cell 2 8");
 		
 		chckbxKaramelsauce = new JCheckBox("Karamelsauce");
+		chckbxKaramelsauce.setBackground(new Color(143, 188, 143));
 		chckbxKaramelsauce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (chckbxKaramelsauce.isSelected() == true)
@@ -497,6 +535,7 @@ public class KaffeMask extends JFrame {
 		contentPane.add(chckbxKaramelsauce, "cell 3 8");
 		
 		chckbxGinger = new JCheckBox("Ginger");
+		chckbxGinger.setBackground(new Color(255, 182, 193));
 		chckbxGinger.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			if (chckbxGinger.isSelected() == true)
@@ -517,52 +556,62 @@ public class KaffeMask extends JFrame {
 		contentPane.add(lblKaffeSorte, "cell 0 9");
 		
 		chckbxMilchkaffe = new JCheckBox("Milchkaffe"); //2
+		chckbxMilchkaffe.setBackground(new Color(152, 251, 152));
 		chckbxMilchkaffe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kaffeNummer = 2;
 				preis();
 				textField.setText(gesamtPreis);
+				chckbxVoll.doClick();
 			}
 		});
 		contentPane.add(chckbxMilchkaffe, "cell 1 10");
 		
-		chckbxEspresso = new JCheckBox("Espresso"); //0
-		chckbxEspresso.setSelected(true);
+		chckbxEspresso = new JCheckBox("Espresso");
+		chckbxEspresso.setBackground(new Color(211, 211, 211));
 		chckbxEspresso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kaffeNummer = 0;
 				preis();
 				textField.setText(gesamtPreis);
+				chckbxKeineMilch.doClick();
 			}
 		});
 		contentPane.add(chckbxEspresso, "cell 2 10");
 		
 		chckbxSchwarz = new JCheckBox("Schwarz"); //1
+		chckbxSchwarz.setBackground(new Color(100, 149, 237));
+		chckbxSchwarz.setSelected(true);
 		chckbxSchwarz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kaffeNummer = 1;
 				preis();
 				textField.setText(gesamtPreis);
+				chckbxKeineMilch.doClick();
 			}
 		});
 		contentPane.add(chckbxSchwarz, "cell 3 10");
 		
 		chckbxKakao_1 = new JCheckBox("Kakao"); //3
+		chckbxKakao_1.setBackground(new Color(240, 230, 140));
 		chckbxKakao_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kaffeNummer = 3;
 				preis();
 				textField.setText(gesamtPreis);
+				chckbxVoll.doClick();
 			}
 		});
 		contentPane.add(chckbxKakao_1, "cell 4 10");
 		
 		chckbxMilchshake = new JCheckBox("Milchshake");
+		chckbxMilchshake.setBackground(new Color(255, 182, 193));
 		chckbxMilchshake.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kaffeNummer = 4;
 				preis();
 				textField.setText(gesamtPreis);
+				chckbxVoll.doClick();
 			}
 		});
 		contentPane.add(chckbxMilchshake, "cell 1 11");
@@ -628,11 +677,13 @@ public class KaffeMask extends JFrame {
 		btnNochEinKaffe = new JButton("Noch ein Kaffe");
 		btnNochEinKaffe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				main(null);
-				System.exit(0);
+				grundZustand();
+				
 			}
 		});
 		contentPane.add(btnNochEinKaffe, "cell 0 15,grow");
+		
+		this.setVisible(true);
 		
 		
 		
